@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ninja Gold</title>
+</head>
+<body>
+    <div class="container">
+        <h1>Ninja Gold!</h1>
+        <h4>Your Gold: <span> {{ request.session.total_gold }} </span></h4>
+    </div>
+    <h3>Farm</h3>
+    <p>earn 10-20 gold</p>
+    <form action="/process_money" method="post" class="">
+        {% csrf_token %}
+        <input type="hidden" name="building" value="farm" />
+        <input type="submit" value="Find Gold!" class="btn btn-warning" />
+    </form>
+    <h3>Cave</h3>
+    <p>earn 5-10 gold</p>
+    <form action="/process_money" method="post" class="">
+        {% csrf_token %}
+        <input type="hidden" name="building" value="cave" />
+        <input type="submit" value="Find Gold!" class="btn btn-warning" />
+    </form>
+    <h3>House</h3>
+    <p>earn 2-5 gold</p>
+    <form action="/process_money" method="post" class="">
+        {% csrf_token %}
+        <input type="hidden" name="building" value="house" />
+        <input type="submit" value="Find Gold!" class="btn btn-warning" />
+    </form>
+    <h3>Casino</h3>
+    <p>earn/lose 0-50 gold</p>
+    <form action="/process_money" method="post" class="">
+        {% csrf_token %}
+        <input type="hidden" name="building" value="casino" />
+        <input type="submit" value="Find Gold!" class="btn btn-warning" />
+    </form>
+    <h5><u>Activities</u>:</h5>
+    <p>{{ request.session.message|safe }}</p>
+    <div class="footer">
+        <a href="/reset" class="btn btn-dark text-warning" role="button" name="reset">Start New Game</a>
+    </div>
+</body>
+</html>
